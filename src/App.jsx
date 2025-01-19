@@ -39,26 +39,29 @@ function App() {
 
   return ( 
     <>
-     <h1 className='text-[40px] font-bold text-center my-[50px]'>Movie Api</h1>
-     <div className='max-w-[1320px] mx-auto'>
-        <input value={title} onChange={getValue} type="text" className='w-[100%] mb-[30px] p-3 h-14 text-[30px] border-2 border-black rounded-[20px] ' placeholder='Searce By Title' />
-     </div>
-     <div className="max-w-[1320px] mx-auto grid grid-cols-4 gap-4">
-      {
-        movieData.length>=1 ?
-
-        movieData.map((items)=>{
-          return(
-            <MovieTypez items={items}/>
-          )
-        })
-        :
-        <div>No Data Found</div>
-      }
-      
-      
-
-     </div>
+     <div className="bg-[#010317]">
+        <h1 className="text-[40px] text-[white] py-[20px] font-extralight text-center">
+          Movie Api
+        </h1>
+        <div className="max-w-[1320px] mx-auto">
+          <input
+            value={title}
+            onChange={getValue}
+            type="text"
+            className="w-[100%] mb-[30px] p-3 h-14 text-[30px] border-2 border-black rounded-[20px] "
+            placeholder="Searce By Title"
+          />
+        </div>
+        <div className="max-w-[1320px] mx-auto grid grid-cols-4 gap-4">
+          {movieData.length >= 1 ? (
+            movieData.map((items) => {
+              return <MovieTypez items={items} />;
+            })
+          ) : (
+            <div>No Data Found</div>
+          )}
+        </div>
+      </div>
     </>
   )
 }
@@ -67,13 +70,13 @@ function MovieTypez({items}) {
 
   let imgPath= `https://image.tmdb.org/t/p/w1280/`
   return(
-    <div className="shadow-lg">
-    <img className='w-full' src={imgPath+ items.poster_path} alt="" />
-    <div className='p-3'>
-      <h3 className='text-[30px] '>{items.title}</h3>
-      <h3>{items.release_date}</h3>
+    <div className="shadow-lg font-mono text-[white]">
+      <img className="w-full rounded-[20px]" src={imgPath + items.poster_path} alt="" />
+      <div className="p-3">
+        <h3 className="text-[30px] ">{items.title}</h3>
+        <h3>{items.release_date}</h3>
+      </div>
     </div>
-  </div>
   )
 }
 
